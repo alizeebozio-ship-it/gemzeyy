@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GemZeyy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 45%, #efefef 100%);
+      color: #151515;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #6f6f6f, #d9d9d9, #7a7a7a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav a {
+      color: #222;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+    }
+
+    nav a:hover {
+      opacity: 0.55;
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero-badge {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.7);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 7vw, 5.6rem);
+      line-height: 0.95;
+      margin-bottom: 20px;
+      letter-spacing: -0.04em;
+    }
+
+    .chrome {
+      background: linear-gradient(90deg, #5b5b5b 0%, #e8e8e8 22%, #8e8e8e 44%, #ffffff 60%, #727272 78%, #d9d9d9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 720px;
+      font-size: 1.1rem;
+      margin-bottom: 34px;
+      color: #3d3d3d;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 24px;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #8a8a8a, #dcdcdc, #7b7b7b);
+      color: #111;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(0,0,0,0.12);
+      color: #111;
+      background: rgba(255,255,255,0.7);
+    }
+
+    section {
+      padding: 88px 20px;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.8rem;
+      color: #6b6b6b;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 14px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-text {
+      max-width: 720px;
+      color: #4c4c4c;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+      margin-top: 36px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.75);
+      padding: 28px;
+      border-radius: 26px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      backdrop-filter: blur(10px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .gallery-item {
+      min-height: 260px;
+      border-radius: 26px;
+      background: linear-gradient(145deg, #d9d9d9, #f7f7f7, #bdbdbd);
+      display: flex;
+      align-items: end;
+      padding: 18px;
+      color: #222;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      border: 1px solid rgba(255,255,255,0.55);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .about-box,
+    .contact-box {
+      margin-top: 34px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 30px;
+      padding: 34px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+    }
+
+    .contact-links a {
+      display: inline-block;
+      margin-right: 16px;
+      margin-top: 12px;
+      color: #111;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      background: #111;
+      color: white;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px 20px;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a {
+        margin: 6px 10px;
+      }
+
+      .hero {
+        min-height: 78vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">GemZeyy</div>
+    <nav>
+      <a href="#accueil">Accueil</a>
+      <a href="#services">Services</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="accueil">
+    <div class="hero-badge">Strass Dentaires</div>
+    <h1><span class="chrome">GemZeyy</span></h1>
+    <p>
+      Toujours plus de strass. Des poses personnalisées, lumineuses et soignées pour sublimer ton sourire.
+    </p>
+    <div class="hero-buttons">
+      <a href="https://www.instagram.com/gemzeyy" target="_blank" class="btn btn-primary">Réserver via Instagram</a>
+      <a href="#galerie" class="btn btn-secondary">Voir la galerie</a>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-kicker">Services</div>
+      <h2>Des strass dentaires au style chrome et raffiné.</h2>
+      <p class="section-text">
+        Une prestation pensée pour celles et ceux qui veulent un détail lumineux, propre et tendance. Minimaliste ou plus audacieux, chaque sourire mérite sa touche de brillance.
+      </p>
+      <div class="cards">
+        <div class="card">
+          <h3>Pose simple</h3>
+          <p>Un strass délicat pour un rendu chic, discret et lumineux au quotidien.</p>
+        </div>
+        <div class="card">
+          <h3>Compositions</h3>
+          <p>Plusieurs strass ou petits agencements pour un effet plus affirmé et stylé.</p>
+        </div>
+        <div class="card">
+          <h3>Conseils personnalisés</h3>
+          <p>Aide au choix du placement et du style selon ton sourire et l’effet recherché.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="galerie">
+  <div class="container">
+    <div class="section-kicker">Galerie</div>
+    <h2>Quelques inspirations.</h2>
+    <p class="section-text">
+      Découvre quelques poses GemZeyy.
+    </p>
+    <div class="gallery-grid">
+
+      <div class="gallery-item">
+        <img src="images/image1.jpg" alt="strass dentaires">
+      </div>
+      <div class="gallery-item">
+        <img src="images/image2.jpg" alt="strass dentaires">
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/image3.jpg" alt="strass dentaires">
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/image4.jpg" alt="strass dentaires">
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section id="apropos">
+    <div class="container">
+      <div class="section-kicker">À propos</div>
+      <h2>L’univers GemZeyy.</h2>
+      <div class="about-box">
+        <p>
+          GemZeyy te propose une pose adaptée et personnalisée selon tes préférences. L’objectif est simple : prendre le temps de réaliser une pose soignée, lumineuse et durable pour sublimer ton sourire. Chaque pose est réalisée avec soin, en utilisant des strass de qualité Swarovski et Preciosa pour garantir un résultat brillant et durable. Que tu cherches une touche subtile ou un look plus audacieux, GemZeyy est là pour t’aider à trouver le style qui te correspond.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-kicker">Contact</div>
+      <h2>Réserve ou écris-moi.</h2>
+      <div class="contact-box">
+        <p>
+          Pour les réservations, questions ou demandes d’informations, contacte-moi directement sur Instagram.
+        </p>
+        <div class="contact-links">
+          <a href="https://www.instagram.com/gemzeyy" target="_blank">Instagram : @gemzeyy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 GemZeyy - Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
